@@ -1,0 +1,31 @@
+<h3 class="heading"><b>KNOWN ERROR DATABASE (KEDB)</b></h3>
+
+<% if @scripts.present? %>
+  <div style="text-align:right; margin-right:80px; font-size: 1.5em;"><u><b><%= link_to "Add New Script", new_script_path %></b></u></div>
+<% end %>
+
+<div class="sol">
+<% if @scripts.empty? %>
+    <p>No scripts found , add a new one.</p>
+    <p><li><%= link_to "Click here to add a New Script", new_script_path %></li></p>
+<% else %>
+
+
+<h2><b><u>List of Scripts</u></b></h2>
+    <ul>
+
+      <% @scripts.each do |script| %>
+          <li class="list">
+              <div class="li">
+              <h4><u><%= link_to script.title , script %></u></h4>
+              
+              </div>
+           
+          </li>
+          <hr>
+      <% end %>
+    </ul>
+<% end %>
+
+<br>
+</div>

@@ -1,0 +1,62 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#back").click(function(){
+     window.location="solutions";
+    });
+});
+</script>
+<div  class = "detail" >
+<h><b> Detailed Solution </b></h>
+</div>
+<div class = "ss">
+<div class="show">
+<% if @solution.Problemno.present? %>
+<p style="margin-left:70px; margin-top: 10px;">
+  <strong>Ticket Number:</strong>
+  <%= @solution.Problemno %>
+</p>
+<% else %>
+<p style="margin-left:70px; margin-top: 10px;">
+  <strong><u>Issued through mail</u></strong>
+</p>
+<% end %>
+
+<p style="margin-left:70px">
+  <strong>Problem:</strong><br>
+  <%= @solution.description %>
+</p>
+<% if @solution.error.present? %>
+<p style="margin-left:70px">
+  <strong>Error:</strong><br>
+  <%= @solution.error %>
+</p>
+<% end %>
+
+<p style="margin-left:70px">
+  <strong>Cause:</strong><br>
+  <%= @solution.cause %>
+</p>
+
+
+<p style="margin-left:70px">
+  <strong>Solution:</strong><br>
+  <pre style="width: auto; font-size:1em; margin-left: 70px; height: auto;"><%= @solution.solution %></pre>
+</p>
+
+<p style="margin-left:70px">
+  <strong>Logged Date:</strong><br>
+  <%= @solution.logged_date.strftime("%d %b. %Y") %>
+</p>
+
+<p style="margin-left:70px">
+  <strong>Solved by:</strong><br>
+  <%= @solution.solver %>
+</p>
+
+<p style="text-align: center; margin-top: 50px; color:#0000FF;" >
+<%= link_to 'Delete', solution_path(@solution.id), method: :delete, data: { confirm: 'Are you sure to delete?' } %> |
+<%= link_to 'Back', solutions_path %> |
+<%= link_to 'Edit/Update', edit_solution_path(@solution.id) %>
+</p>
+</div>
+</div>

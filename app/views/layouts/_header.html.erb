@@ -1,0 +1,35 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#ref").click(function(){
+     window.location="scripts";
+    });
+    $("#resh").click(function(){
+     window.location="solutions";
+    });
+});
+</script>
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="aa">  
+    <nav>
+      <ul class="topnav">
+            <div class = "head" ,  id="bar">
+                 <% if @solutions.present? %>
+                <li id = "ref" ><%= link_to "Scripts", scripts_path %></li> |
+                <li><%= link_to "Home", root_path %></li>
+                 <%= form_tag solutions_path, :method => :get do %>
+                        <%= text_field_tag :search, params[:search] , placeholder: "search here..." %>
+                          <%= submit_tag "Search",:id => "src" , :name => nil, :class => "button postfix" %>
+                 <% end %>
+                 <% elsif @scripts.present? %>
+                <li id = "resh"><%= link_to "Solutions", solutions_path %></li> |
+                <li><%= link_to "Home", root_path %></li>
+                 <%= form_tag scripts_path, :method => :get do %>
+                        <%= text_field_tag :find, params[:find] , placeholder: "search here..." %>
+                          <%= submit_tag "Search", :id => "src" , :name => nil, :class => "button postfix" %>
+                 <% end %>
+                 <% end %>
+            </div>
+      </ul>
+    </nav>
+  </div>
+</header>

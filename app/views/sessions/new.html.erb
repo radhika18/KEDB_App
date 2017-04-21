@@ -1,0 +1,38 @@
+<% provide(:title, "KNOWN ERROR DATABASE (KEDB)") %>
+<div class="container">
+<h1 ><u>KNOWN ERROR DATABASE (KEDB)</u></h1>
+<div class="sol">
+  <div class="one">
+  <h2>Find a Solution</h2>
+    <div>
+      <p id="home">
+        A known error database (KEDB) is a database that describes all of the known issues within the overall systems. It describes the situations in which these issues appear, and when possible, it offers a workaround that will get the user around the problem and back to productive work.
+      </p>
+      <p id="home">
+        This database also becomes part of the overall Problem Management Database, where IT can go to identify and prioritize problems that need permanent resolutions. Workarounds are only temporary fixes so that work can continue until problems are inevitably resolved. The known error database should include screenshots of the issues, as well as the text of error messages, and describes the issue from the point of view of the user.
+      </p>
+    </div>
+  </div>
+  <div class="two">
+    <h2>Log in</h2>
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <%= form_for(:session, url: login_path) do |f| %>
+        <p id="a">
+          <%= f.label :email %>
+          <%= f.email_field :email, class: 'form-control' %>
+        </p>
+        <p id="a">
+          <%= f.label :password %>
+          <%= f.password_field :password, class: 'form-control' %>
+        </p>
+          <%= f.submit "Log in", class: "btn btn-primary" %>
+        <% end %>
+
+        <p>New user? <%= link_to "Sign up now!", "#" %></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

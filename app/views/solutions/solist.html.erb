@@ -1,0 +1,26 @@
+<h3 class="heading"><b>KNOWN ERROR DATABASE (KEDB)</b></h3>
+<% if @solutions.present? %>
+  <div style="text-align:right; margin-right:80px; font-size: 1.5em;"><u><b><%= link_to "Add New Solution", new_solution_path %></b></u></div>
+<% end %>
+<div class="sol">
+<% if @solutions.empty? %>
+    <p>No solutions found , add a new one.</p>
+    <p><li><%= link_to "Click here to add a New Solution", new_solution_path %></li></p>
+<% else %>
+<h2 style="margin-top: 5px;"><b><u>List of Solutions</u></b></h2>
+    <ul>
+      <% @solutions.each do |solution| %>
+          <li class="list">
+              <div class="li">
+              <h4><u><%= link_to solution.description , solution %></u></h4>
+              <div class="err"><%= solution.error %></div>
+              <% if !solution.error.present? %>
+              <div class="err"><%= solution.cause %></div>
+              <% end %>
+              </div>
+           
+          </li>
+          <hr>
+      <% end %>
+    </ul>
+<% end %>

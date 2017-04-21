@@ -1,0 +1,53 @@
+<script>
+ function copyToClipboard(element) {
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val($(element).text()).select();
+  document.execCommand("copy");
+  $temp.remove();
+  alert('Script has been copied');
+}
+
+$(document).ready(function(){
+    $("#bac").click(function(){
+     window.location="scripts";
+    });
+});
+</script>
+<div  class = "detail" >
+<h><b> Detailed Script </b></h>
+</div>
+<div class = "ss">
+<div class="show">
+<p style="font-size: 1.3em;">
+  <strong><u><%= @script.title %></u></strong>
+</p>
+
+<p>
+<div style = "height: auto;
+  border-radius: 1.5px;
+  margin: auto;
+  border: 1.5px solid grey;
+  padding: 30px; margin-top: 15px;" >
+  <strong><u>Script:</u></strong>
+  
+  <p id="script" style=" width: 800px;
+  height: auto;
+  font-size: 0.9em;
+  padding: 1.5px;"><SPAN ID="copytext"><pre><code id = "it"><%= @script.procedure %></code></pre></SPAN></p>
+  <div id = "cb">
+  <button id="copyButton" onclick="copyToClipboard('#it')" class="hover"><img src="https://cdn0.iconfinder.com/data/icons/fatcow/32x32/clipboard_sign_out.png">Copy to Clipboard</button><br>
+  </div>
+  </div>
+  </p>
+  
+  <TEXTAREA ID="holdtext" STYLE="display:none;">
+  </TEXTAREA>
+
+ <p style="text-align: center; margin-top: 15px;  color:#0000FF;" >
+ <%= link_to 'Delete', script_path(@script.id), method: :delete, data: { confirm: 'Are you sure to delete?' } %> |
+ <%= link_to 'Back', scripts_path %> |
+ <%= link_to 'Edit/Update', edit_script_path(@script.id) %>
+ </p>
+</div>
+</div>
